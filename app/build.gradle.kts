@@ -1,8 +1,8 @@
 import com.android.builder.model.TestOptions
 
 plugins {
-    alias(libs.plugins.androidApplication)
-    alias(libs.plugins.jetbrainsKotlinAndroid)
+    id("com.android.application")
+    id("org.jetbrains.kotlin.android")
     id("com.google.gms.google-services")
     kotlin("kapt")
     id("dagger.hilt.android.plugin")
@@ -31,15 +31,18 @@ android {
             )
         }
     }
+
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
+
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
-    testOptions{
-        unitTests.isReturnDefaultValues=true
+
+    testOptions {
+        unitTests.isReturnDefaultValues = true
     }
 
     buildFeatures {
@@ -52,45 +55,48 @@ android {
 }
 
 dependencies {
+    // AndroidX y Material
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.annotation)
-    //firebase
+
+    // Firebase
+    implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.auth.ktx)
-    implementation ("com.google.firebase:firebase-config-ktx")
-    implementation ("com.google.firebase:firebase-analytics-ktx")
+    implementation("com.google.firebase:firebase-config-ktx")
+    implementation("com.google.firebase:firebase-analytics-ktx")
     implementation(libs.core.ktx)
 
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-    implementation(platform(libs.firebase.bom))
-    implementation(libs.firebaseAnalytics)
-    //Retrofit
+    // Retrofit + Gson
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
-    //Corrutinas
+
+    // Coroutines
     implementation(libs.kotlinx.coroutines.android)
-    //dagger hilt
+
+    // Dagger Hilt
     implementation("com.google.dagger:hilt-android:2.51.1")
     kapt("com.google.dagger:hilt-compiler:2.51.1")
-    //Room
+
+    // Room
     implementation("androidx.room:room-ktx:2.6.1")
     kapt("androidx.room:room-compiler:2.6.1")
 
-    // nav_component
+    // Navigation Component
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
     implementation("androidx.navigation:navigation-ui-ktx:2.7.7")
-
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
 
-    //RetroMock
+    // RetroMock
     implementation("co.infinum:retromock:1.1.1")
 
-    //mockito
-    testImplementation ("org.mockito:mockito-core:3.+")
+    // Testing
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
+    testImplementation("org.mockito:mockito-core:3.+")
 }
