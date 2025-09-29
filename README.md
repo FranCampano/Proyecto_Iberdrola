@@ -29,12 +29,13 @@ Esta versión es un **proyecto demostrativo**, pensado para mostrar la funcional
 
 ## Instalación y ejecución
 1. Clona el repositorio:
-2. ```bash git clone https://github.com/FranCampano/Proyecto_Iberdrola.git
+  ```bash
+git clone https://github.com/FranCampano/Proyecto_Iberdrola.git
 
-3.Abre el proyecto en Android Studio.
+2.Abre el proyecto en Android Studio.
 
-4.Configura Firebase y otras dependencias según tu entorno.
+3.Configura Firebase y otras dependencias según tu entorno.
 
-5.Ejecuta la app en un emulador o dispositivo Android.
+4.Ejecuta la app en un emulador o dispositivo Android.
 
 Nota: Todas las llamadas a APIs externas son reales, también puedes activar el botón "mock" para simularla.
